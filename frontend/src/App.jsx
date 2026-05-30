@@ -210,7 +210,7 @@ function App() {
   const [analyzedText, setAnalyzedText] = useState('')
   const [selectedFlagIndex, setSelectedFlagIndex] = useState(null)
   const [history, setHistory] = useState([])
-  const [apiReady, setApiReady] = useState(true)
+  const [apiReady, setApiReady] = useState(false)
   const [copied, setCopied] = useState(false)
   const [searchSummary, setSearchSummary] = useState(null)
   const [searchResults, setSearchResults] = useState(null)
