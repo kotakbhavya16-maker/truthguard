@@ -1,0 +1,21 @@
+{
+  "name": "TruthGuard — AI Fake News & Job Scam Detector",
+  "short_name": "TruthGuard",
+  "description": "AI-powered tool to detect fake news and job scams instantly. Get trust scores and detailed analysis.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#030307",
+  "theme_color": "#030307",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["utilities", "security"],
+  "lang": "en",
+  "dir": "ltr"
+}

@@ -1,0 +1,8 @@
+Flask
+flask-cors
+Flask-Limiter
+python-dotenv
+groq
+requests
+beautifulsoup4
+gunicorn
