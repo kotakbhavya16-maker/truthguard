@@ -286,13 +286,17 @@ function App() {
     }, 100)
   }
 
-  const checkApiHealth = async () => {
+  const checkApiHealth = async (retryCount = 0) => {
     try {
       const res = await fetch(`${API_BASE}/health`)
       const data = await res.json()
       setApiReady(data.api_configured)
     } catch {
       setApiReady(false)
+      // Auto-retry every 5 seconds for up to 2 minutes (cold start)
+      if (retryCount < 24) {
+        setTimeout(() => checkApiHealth(retryCount + 1), 5000)
+      }
     }
   }
 
@@ -909,15 +913,14 @@ function App() {
       {/* Analyzer */}
       <section className="analyzer-section">
 
-        {/* API Warning */}
+        {/* API Connecting */}
         {!apiReady && (
-          <div className="api-notice">
-            <AlertIcon />
-            <span>
-              Backend not running or API key missing. 
-              Start Flask: <code>python app.py</code> and add your Groq API key to <code>.env</code> file.
-              Get free key at <a href="https://console.groq.com" target="_blank" rel="noreferrer">console.groq.com</a>
-            </span>
+          <div className="api-connecting">
+            <div className="connecting-pulse"></div>
+            <div className="connecting-text">
+              <strong>Connecting to AI Server...</strong>
+              <p>Our server is waking up — this takes 20-30 seconds on first visit. Please wait!</p>
+            </div>
           </div>
         )}
 
