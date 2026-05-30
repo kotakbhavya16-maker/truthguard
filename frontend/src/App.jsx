@@ -705,6 +705,24 @@ function App() {
   }
 
   return (
+    <>
+    {/* Full-screen splash loader while backend wakes up */}
+    {!apiReady && (
+      <div className="splash-screen">
+        <div className="splash-content">
+          <div className="splash-logo">
+            <ShieldIcon />
+          </div>
+          <h2 className="splash-title">TruthGuard</h2>
+          <div className="splash-loader">
+            <div className="splash-loader-bar"></div>
+          </div>
+          <p className="splash-status">Initializing AI Engine...</p>
+          <p className="splash-sub">This may take 20-30 seconds on first visit</p>
+        </div>
+      </div>
+    )}
+
     <div className="app">
       {/* Ambient Blobs */}
       <div className="ambient-blobs">
@@ -913,16 +931,6 @@ function App() {
       {/* Analyzer */}
       <section className="analyzer-section">
 
-        {/* API Connecting */}
-        {!apiReady && (
-          <div className="api-connecting">
-            <div className="connecting-pulse"></div>
-            <div className="connecting-text">
-              <strong>Connecting to AI Server...</strong>
-              <p>Our server is waking up — this takes 20-30 seconds on first visit. Please wait!</p>
-            </div>
-          </div>
-        )}
 
         {/* Mode Toggle */}
         <div className="mode-toggle" role="group" aria-label="Analysis mode">
@@ -1376,7 +1384,9 @@ function App() {
         <p style={{ fontSize: '12px' }}>© 2026 TruthGuard. All rights reserved.</p>
       </footer>
     </div>
+    </>
   )
 }
 
 export default App
+
